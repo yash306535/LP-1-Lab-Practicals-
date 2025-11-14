@@ -1,0 +1,14 @@
+##camera
+import os
+from datetime import datetime
+
+#create a timestamped filename so each image is unique
+
+timestamp=datetime.now().strftime("%Y%m%d_%H%M%S")
+output_file=f"image_{timestamp}.jpg"
+
+#capture an image with 2-second preview and save it
+
+os.system(f"rpicam-still -t 2000 -o {output_file}")
+
+print(f"Image saved as {output_file}")

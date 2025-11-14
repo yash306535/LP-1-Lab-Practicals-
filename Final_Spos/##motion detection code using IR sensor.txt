@@ -1,0 +1,28 @@
+##motion detection code
+
+import RPi.GPIO as GPIO
+import time
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+SENSOR_PIN=2
+GPIO.setup(SENSOR_PIN,GPIO.IN)
+try:
+	last_state=None
+	
+	while true:
+		current_state=GPIO.input(SENSOR_PIN)
+		if current_state!=last_state:
+			if current_state==1:
+				print("no object detected")
+			else:
+				print("object detected")
+			last_state=current_state
+		time.sleep(0.1)
+
+except KeyboardInterrupt:
+	print("\nExiting program")
+	GPIO.cleanup()
+
+#vcc-2
+#gnd-9
+#out-3
